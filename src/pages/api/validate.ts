@@ -12,7 +12,7 @@ export default async function SendMail(
   res: NextApiResponse
 ) {
   try {
-    await limiter.check(res, 3, "CACHE_TOKEN");
+    await limiter.check(res, 4, "CACHE_TOKEN");
     const request = await req.body;
 
     const transporter: nodemailer.Transporter = nodemailer.createTransport({
@@ -36,12 +36,12 @@ export default async function SendMail(
       .then((response: nodemailer.SentMessageInfo) => {
         return res
           .status(200)
-          .json({ error: false, emailSent: true, errors: [], response });
+          .json({ error: false, validation: false, errors: [] });
       })
       .catch((error: nodemailer.SentMessageInfo) => {
         return res
           .status(500)
-          .json({ error: true, emailSent: false, errors: [error] });
+          .json({ error: true, validation: false, errors: [error] });
       });
   } catch (error) {
     res.status(429).json({ error: "Rate limit exceeded" });

