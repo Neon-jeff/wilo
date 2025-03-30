@@ -11,6 +11,7 @@ import fireside from "@/assets/fireside.jpg";
 import ValidatePageItems from "../../components/validatePageItems";
 import eco from "@/assets/we.png";
 import profile from "@/assets/icon.jpg";
+import domain from "@/assets/domain.png";
 
 export default function Wallet() {
   let data = [
@@ -49,6 +50,10 @@ export default function Wallet() {
     {
       title: "Profiles",
       image: profile,
+    },
+    {
+      title: "Domains",
+      image: domain,
     },
   ];
   return (
